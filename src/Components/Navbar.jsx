@@ -25,7 +25,7 @@ const Navbar = () => {
     </div>
     <Link to="/" className='flex items-center'>
         <img className='w-15' src={prodIcon} alt="" />
-    <a className=" text-xl">IMPORT-EXPORT-HUB</a>
+    <p className=" text-xl  font-bold">IMPORT-EXPORT-HUB</p>
     </Link>
   </div>
   <div className="navbar-center hidden lg:flex">
@@ -34,8 +34,8 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <Link to="/login" className="btn">LogIn</Link>
-    <Link to="/register" className="btn">Register</Link>
+    <Link to="/auth/login" className="btn bg-purple-200 hover:opacity-90 text-purple-900 font-bold mr-3">LogIn</Link>
+    <Link to="/auth/register" className="btn bg-purple-200 hover:opacity-90 text-purple-900 font-bold">Register</Link>
   </div>
 </div>
     );

@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router';
 import prodIcon from '../assets/productIcon.png';
+import { AuthContext } from '../AuthProvider/AuthProvider';
+import { toast } from 'react-toastify';
 const Navbar = () => {
+    const {user,logOut}=useContext(AuthContext);
+    const handleLogOut=()=>{
+        logOut()
+        .then(()=>{
+            toast.success("Logged Out Successfully");
+        })
+        .catch((error)=>{
+            toast.error(error.message);
+        })
+    }
     const links=<>
    
     <li><NavLink to="/allProducts">All Products</NavLink></li>
@@ -34,8 +46,20 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <Link to="/auth/login" className="btn bg-purple-200 hover:opacity-90 text-purple-900 font-bold mr-3">LogIn</Link>
+    {
+        user?
+        <>
+        <img className='w-10 h-10 object-cover mr-2 rounded-full' src={user.photoURL} alt="" />
+        <Link onClick={handleLogOut} to="/" className="btn bg-purple-200 hover:opacity-90 text-purple-900 font-bold">LogOut</Link>
+        </>
+        :
+        
+        <>
+        <Link to="/auth/login" className="btn bg-purple-200 hover:opacity-90 text-purple-900 font-bold mr-3">LogIn</Link>
     <Link to="/auth/register" className="btn bg-purple-200 hover:opacity-90 text-purple-900 font-bold">Register</Link>
+        </>
+    }
+    
   </div>
 </div>
     );

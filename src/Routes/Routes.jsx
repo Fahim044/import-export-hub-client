@@ -4,6 +4,7 @@ import Login from "../Auth/Login";
 import Register from "../Auth/Register";
 import Home from "../Components/Home";
 import AuthLayout from "../Layouts/AuthLayout";
+import PrivateRoute from "../Auth/PrivateRoute";
 
 
 export const router=createBrowserRouter([
@@ -23,15 +24,21 @@ export const router=createBrowserRouter([
             },
             {
                 path:"/myExport",
-                element:<p>My Export</p>
+                element:<PrivateRoute>
+                    <p>My Export</p>
+                </PrivateRoute>
             },
             {
                 path:"/myImport",
-                element:<p>My Import</p>
+                element:<PrivateRoute>
+                    <p>My Import</p>
+                </PrivateRoute>
             },
             {
                 path:"/addProducts",
-                element:<p>add Products</p>
+                element:<PrivateRoute>
+                    <p>add Products</p>
+                </PrivateRoute>
             },
             {
                 path:"/*",

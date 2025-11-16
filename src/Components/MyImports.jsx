@@ -52,6 +52,7 @@ const MyImports = () => {
     }
     return (
         <div className='w-11/12 mx-auto py-5'>
+          <title>My Imports</title>
            <h2 className='text-3xl font-bold text-center'>My Imports : {imports.length}</h2>
            <div className="overflow-x-auto">
   <table className="table">

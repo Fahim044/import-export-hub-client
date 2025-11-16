@@ -70,6 +70,7 @@ const Register = () => {
     }
     return (
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto">
+            <title>Authentication-Register</title>
         <h1 className="text-5xl font-bold text-center">Register now!</h1>
       <div className="card-body">
         <form  onSubmit={handleRegister}>

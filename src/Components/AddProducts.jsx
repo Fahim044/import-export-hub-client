@@ -46,6 +46,7 @@ const AddProducts = () => {
     }
     return (
         <div className='mx-auto w-11/12 py-4 flex flex-col justify-center items-center'>
+            <title>Add Products</title>
            <h2 className='text-center text-3xl font-bold'>Add Your Products </h2>
            <form onSubmit={handleExportProducts} className='md:w-70 '>
             <fieldset className="fieldset ">

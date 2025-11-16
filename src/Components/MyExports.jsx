@@ -99,6 +99,7 @@ availableQuantity:availableQuantity,
     }
     return (
         <div className='w-11/12 mx-auto py-4'>
+            <title>My Exports</title>
             <h2 className='text-center text-3xl font-bold '>My Exports : {exports.length}</h2>
             <div className="overflow-x-auto">
   <table className="table">

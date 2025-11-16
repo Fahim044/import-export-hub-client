@@ -5,6 +5,9 @@ import Register from "../Auth/Register";
 import Home from "../Components/Home";
 import AuthLayout from "../Layouts/AuthLayout";
 import PrivateRoute from "../Auth/PrivateRoute";
+import AllProducts from "../Components/Products/AllProducts";
+import Loading from "../Components/Loading";
+import ProductDetails from "../Components/Products/ProductDetails";
 
 
 export const router=createBrowserRouter([
@@ -20,7 +23,9 @@ export const router=createBrowserRouter([
             
             {
                 path:"/allProducts",
-                element:<p>all Products</p>
+                element:<AllProducts></AllProducts>,
+                loader:()=>fetch('http://localhost:3000/products'),
+                hydrateFallbackElement:<Loading></Loading>
             },
             {
                 path:"/myExport",
@@ -39,6 +44,14 @@ export const router=createBrowserRouter([
                 element:<PrivateRoute>
                     <p>add Products</p>
                 </PrivateRoute>
+            },
+            {
+                path:'/productDetails/:id',
+                element:<PrivateRoute>
+                    <ProductDetails></ProductDetails>
+                </PrivateRoute>,
+                loader:({params})=>fetch(`http://localhost:3000/products/${params.id}`),
+                hydrateFallbackElement:<Loading></Loading>
             },
             {
                 path:"/*",

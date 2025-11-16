@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import LatestProduct from './Products/LatestProduct';
+import Loading from './Loading';
 const latestProductsPromise=fetch('http://localhost:3000/latest-products').then(res=>res.json());
 const Home = () => {
     return (
@@ -11,7 +12,9 @@ const Home = () => {
         </div>
         <div>
             
-            <LatestProduct latestProductsPromise={latestProductsPromise}></LatestProduct>
+           <Suspense fallback={<Loading></Loading>}>
+             <LatestProduct latestProductsPromise={latestProductsPromise}></LatestProduct>
+           </Suspense>
         </div>
         </>
     );

@@ -12,6 +12,7 @@ const Footer = () => {
                 <div className='flex items-center gap-6 md:flex-row flex-col'>
                     <img src={prodIcon} alt="" />
             <div>
+                <h2 className='text-2xl font-bold'>IMPORT-EXPORT-HUB</h2>
                 <h2 className='font-bold'>Contact Info</h2>
             <p>Uttara,Dhaka</p>
             </div>

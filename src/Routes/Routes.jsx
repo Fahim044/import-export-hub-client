@@ -8,6 +8,7 @@ import PrivateRoute from "../Auth/PrivateRoute";
 import AllProducts from "../Components/Products/AllProducts";
 import Loading from "../Components/Loading";
 import ProductDetails from "../Components/Products/ProductDetails";
+import MyImports from "../Components/MyImports";
 
 
 export const router=createBrowserRouter([
@@ -28,15 +29,15 @@ export const router=createBrowserRouter([
                 hydrateFallbackElement:<Loading></Loading>
             },
             {
-                path:"/myExport",
+                path:"/myExports",
                 element:<PrivateRoute>
                     <p>My Export</p>
                 </PrivateRoute>
             },
             {
-                path:"/myImport",
+                path:"/myImports",
                 element:<PrivateRoute>
-                    <p>My Import</p>
+                    <MyImports></MyImports>
                 </PrivateRoute>
             },
             {

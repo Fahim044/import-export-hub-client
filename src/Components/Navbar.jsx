@@ -17,8 +17,8 @@ const Navbar = () => {
     const links=<>
    
     <li><NavLink to="/allProducts">All Products</NavLink></li>
-    <li><NavLink to="/myExport">My Exports</NavLink></li>
-    <li><NavLink to="/myImport">My Imports</NavLink></li>
+    <li><NavLink to="/myExports">My Exports</NavLink></li>
+    <li><NavLink to="/myImports">My Imports</NavLink></li>
     <li><NavLink to="/addProducts">Add Export</NavLink></li>
         
     </>

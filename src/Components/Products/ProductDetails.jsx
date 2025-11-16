@@ -1,10 +1,14 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { useLoaderData } from 'react-router';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const ProductDetails = () => {
     const [exceed,setExceed]=useState(false);
     const [message,setMessage]=useState("");
+    const [imports,setImports]=useState([]);
     const product=useLoaderData();
+    const {user}=useContext(AuthContext);
     // console.log(product);
     const {_id,image,name,price,originCountry,rating,availableQuantity,description,createdAt}=product;
     // console.log(_id,image,name,price,originCountry,rating,availableQuantity,description,createdAt);
@@ -14,6 +18,52 @@ const ProductDetails = () => {
     }
     const handleModalSubmit=(e)=>{
         e.preventDefault();
+        const form=e.target;
+        const quantity=form.quantity.value;
+        const newImport={
+            productId:_id,
+            importerEmail:user.email,
+            name:name,
+            image:image,
+            price:price,
+            rating:rating,
+            originCountry:originCountry,
+            importedQuantity:parseInt(quantity),
+        };
+        fetch('http://localhost:3000/imports',{
+            method:'POST',
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(newImport)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log('After inserting or modified import:',data);
+            if(data.insertedId)
+            {
+                modalRef.current.close();
+                Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "Product Imported",
+  showConfirmButton: false,
+  timer: 1500
+});
+           
+            newImport._id=data.insertedId;
+            const newImports=[...imports,newImport];
+            setImports(newImports);
+             }
+            modalRef.current.close();
+                Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "Product Import Updated",
+  showConfirmButton: false,
+  timer: 1500
+});
+        })
     }
     const handleQuantity=(e)=>{
 const currentGivenQuantity=e.target.value;

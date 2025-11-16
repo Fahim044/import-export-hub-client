@@ -90,9 +90,9 @@ else{
                 <p>Price: <span className='font-bold'>{price}</span></p>
                 <p>Origin Country: <span className='font-bold'>{originCountry}</span></p>
                 <p>Rating: <span className='font-bold'>{rating}</span></p>
-                <p>Created At: <span className='font-bold'>{createdAt}</span></p>
+<p>Created At: <span className='font-bold'>{createdAt && createdAt}</span></p>
                 <p>Available Quantity: <span className='font-bold'>{availableQuantity}</span></p>
-                <p>Description: <span className='font-bold'>{description}</span></p>
+                <p>Description: <span className='font-bold'>{description && description}</span></p>
                 <button onClick={handleModalOpen} className='btn bg-purple-200 font-bold text-lg text-purple-800'>Import Now</button>
                 <dialog ref={modalRef} id="my_modal_5" className="modal modal-bottom sm:modal-middle">
   <div className="modal-box">

@@ -1,10 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import prodIcon from '../assets/productIcon.png';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
+import { LuSunMedium } from 'react-icons/lu';
+import { MdDarkMode } from 'react-icons/md';
 const Navbar = () => {
     const {user,logOut}=useContext(AuthContext);
+    const [mode,setMode]=useState(true);
+    useEffect(()=>{
+      if(mode)
+      {
+        document.documentElement.setAttribute('data-theme','light');
+      }
+      else
+      {
+        document.documentElement.setAttribute('data-theme','dark');
+      }
+    },[mode]);
     const handleLogOut=()=>{
         logOut()
         .then(()=>{
@@ -46,6 +59,16 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
+    <button onClick={()=>setMode(!mode)} className='btn'>
+      {
+      mode ?
+      <LuSunMedium className='mr-5' />
+      :
+      <MdDarkMode className='mr-5'/>
+    }
+    </button>
+    
+    
     {
         user?
         <>

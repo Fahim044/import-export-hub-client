@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import { Link } from 'react-router';
+import Swal from 'sweetalert2';
 
 const MyImports = () => {
     const {user}=useContext(AuthContext);
@@ -11,11 +12,44 @@ const MyImports = () => {
             fetch(`http://localhost:3000/imports?email=${user.email}`)
             .then(res=>res.json())
             .then(data=>{
-                console.log(data);
+                // console.log(data);
                 setImports(data);
             })
         }
     },[user])
+    const handleRemoveImport=(eachImport)=>{
+        Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, remove it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+    fetch(`http://localhost:3000/imports/${eachImport._id}`,{
+        method:'POST',
+        headers:{
+            'content-type':'application/json'
+        },
+        body:JSON.stringify(eachImport)
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        console.log('after delete: ',data);
+        const remainingImports=imports.filter(singleImport=>singleImport._id!==eachImport._id);
+        setImports(remainingImports);
+        Swal.fire({
+      title: "Removed!",
+      text: "Your Import has been Removed.",
+      icon: "success"
+    });
+    })
+    
+  }
+});
+    }
     return (
         <div className='w-11/12 mx-auto py-5'>
            <h2 className='text-3xl font-bold text-center'>My Imports : {imports.length}</h2>
@@ -62,7 +96,7 @@ const MyImports = () => {
         <td>{eachImport.rating}</td>
         <td>{eachImport.originCountry}</td>
         <td>{eachImport.importedQuantity}</td>
-        <th><button className='btn btn-outline'>Remove</button></th>
+        <th><button onClick={()=>handleRemoveImport(eachImport)} className='btn btn-outline'>Remove</button></th>
         <th><Link to={`/productDetails/${eachImport.productId}`} className='btn btn-outline'>See Details</Link></th>
       </tr>)
       }

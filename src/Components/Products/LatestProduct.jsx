@@ -3,7 +3,7 @@ import Product from './Product';
 
 const LatestProduct = ({latestProductsPromise}) => {
     const products=use(latestProductsPromise);
-    console.log(products);
+    
     return (
         <div className='mx-auto'>
             <h1 className='text-center font-bold text-3xl my-8'>Latest Products</h1>

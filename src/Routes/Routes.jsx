@@ -9,6 +9,7 @@ import AllProducts from "../Components/Products/AllProducts";
 import Loading from "../Components/Loading";
 import ProductDetails from "../Components/Products/ProductDetails";
 import MyImports from "../Components/MyImports";
+import AddProducts from "../Components/AddProducts";
 
 
 export const router=createBrowserRouter([
@@ -43,7 +44,7 @@ export const router=createBrowserRouter([
             {
                 path:"/addProducts",
                 element:<PrivateRoute>
-                    <p>add Products</p>
+                    <AddProducts></AddProducts>
                 </PrivateRoute>
             },
             {

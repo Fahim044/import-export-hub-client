@@ -10,6 +10,7 @@ import Loading from "../Components/Loading";
 import ProductDetails from "../Components/Products/ProductDetails";
 import MyImports from "../Components/MyImports";
 import AddProducts from "../Components/AddProducts";
+import MyExports from "../Components/MyExports";
 
 
 export const router=createBrowserRouter([
@@ -32,7 +33,7 @@ export const router=createBrowserRouter([
             {
                 path:"/myExports",
                 element:<PrivateRoute>
-                    <p>My Export</p>
+                    <MyExports></MyExports>
                 </PrivateRoute>
             },
             {

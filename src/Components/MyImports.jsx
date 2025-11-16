@@ -88,7 +88,7 @@ const MyImports = () => {
             </div>
             <div>
               <div className="font-bold">{eachImport.name}</div>
-              {/* <div className="text-sm opacity-50">United States</div> */}
+            
             </div>
           </div>
         </td>

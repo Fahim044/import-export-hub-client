@@ -7,7 +7,7 @@ import { LuSunMedium } from 'react-icons/lu';
 import { MdDarkMode } from 'react-icons/md';
 const Navbar = () => {
     const {user,logOut}=useContext(AuthContext);
-    const [mode,setMode]=useState(true);
+    const [mode,setMode]=useState(false);
     useEffect(()=>{
       if(mode)
       {
@@ -36,7 +36,7 @@ const Navbar = () => {
         
     </>
     return (
-        <div className="navbar bg-base-100 shadow-sm">
+        <div className="navbar bg-base-100 shadow-sm w-full">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -48,10 +48,12 @@ const Navbar = () => {
         {links}
       </ul>
     </div>
-    <Link to="/" className='flex items-center'>
+    
+      <Link to="/" className=' flex   items-center'>
         <img className='w-15' src={prodIcon} alt="" />
-    <p className=" text-xl  font-bold">IMPORT-EXPORT-HUB</p>
+    <p className=" md:text-xl text-lg  font-bold">IMPORT-EXPORT-HUB</p>
     </Link>
+    
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
@@ -78,8 +80,10 @@ const Navbar = () => {
         :
         
         <>
-        <Link to="/auth/login" className="btn bg-purple-200 hover:opacity-90 text-purple-900 font-bold mr-3">LogIn</Link>
+        <div className='flex flex-col md:flex-row justify-end'>
+          <Link to="/auth/login" className="btn bg-purple-200 hover:opacity-90 text-purple-900 font-bold mr-3">LogIn</Link>
     <Link to="/auth/register" className="btn bg-purple-200 hover:opacity-90 text-purple-900 font-bold">Register</Link>
+        </div>
         </>
     }
     

@@ -7,7 +7,7 @@ const MyExports = () => {
     const [exports,setExports]=useState([]);
     const [selectedProduct,setSelectedProduct]=useState(null);
     useEffect(()=>{
-        fetch(`http://localhost:3000/products?email=${user.email}`)
+        fetch(`https://import-export-hub-server-theta.vercel.app/products?email=${user.email}`)
         .then(res=>res.json())
         .then(data=>{
             console.log('My exported Data:',data)
@@ -25,7 +25,7 @@ const MyExports = () => {
   confirmButtonText: "Yes, delete it!"
 }).then((result) => {
   if (result.isConfirmed) {
-    fetch(`http://localhost:3000/products/${_id}`,{
+    fetch(`https://import-export-hub-server-theta.vercel.app/products/${_id}`,{
         method:'DELETE'
     })
     .then(res=>res.json())
@@ -70,7 +70,7 @@ rating:rating,
 availableQuantity:availableQuantity,
         };
         // console.log(selectedProduct._id);
-        fetch(`http://localhost:3000/products/${selectedProduct._id}`,{
+        fetch(`https://import-export-hub-server-theta.vercel.app/products/${selectedProduct._id}`,{
             method:'PATCH',
             headers:{
                 'content-type':'application/json'

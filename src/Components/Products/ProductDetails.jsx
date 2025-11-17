@@ -30,7 +30,7 @@ const ProductDetails = () => {
             originCountry:originCountry,
             importedQuantity:parseInt(quantity),
         };
-        fetch('http://localhost:3000/imports',{
+        fetch('https://import-export-hub-server-theta.vercel.app/imports',{
             method:'POST',
             headers:{
                 'content-type':'application/json'
@@ -54,8 +54,10 @@ const ProductDetails = () => {
             newImport._id=data.insertedId;
             const newImports=[...imports,newImport];
             setImports(newImports);
-             }
             modalRef.current.close();
+             }
+            else{
+                modalRef.current.close();
                 Swal.fire({
   position: "top-end",
   icon: "success",
@@ -63,6 +65,7 @@ const ProductDetails = () => {
   showConfirmButton: false,
   timer: 1500
 });
+            }
         })
     }
     const handleQuantity=(e)=>{

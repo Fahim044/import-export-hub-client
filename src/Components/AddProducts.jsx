@@ -22,7 +22,7 @@ const AddProducts = () => {
             availableQuantity:parseInt(availableQuantity),
             exporterEmail:user.email
         };
-        fetch('http://localhost:3000/products',{
+        fetch('https://import-export-hub-server-theta.vercel.app/products',{
             method:'POST',
             headers:{
                 'content-type':'application/json'
@@ -41,6 +41,7 @@ const AddProducts = () => {
                   showConfirmButton: false,
                   timer: 1500
                 });
+                form.reset();
             }
         })
     }

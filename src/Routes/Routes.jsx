@@ -27,7 +27,7 @@ export const router=createBrowserRouter([
             {
                 path:"/allProducts",
                 element:<AllProducts></AllProducts>,
-                loader:()=>fetch('http://localhost:3000/products'),
+                loader:()=>fetch('https://import-export-hub-server-theta.vercel.app/products'),
                 hydrateFallbackElement:<Loading></Loading>
             },
             {
@@ -53,7 +53,7 @@ export const router=createBrowserRouter([
                 element:<PrivateRoute>
                     <ProductDetails></ProductDetails>
                 </PrivateRoute>,
-                loader:({params})=>fetch(`http://localhost:3000/products/${params.id}`),
+                loader:({params})=>fetch(`https://import-export-hub-server-theta.vercel.app/products/${params.id}`),
                 hydrateFallbackElement:<Loading></Loading>
             },
             {

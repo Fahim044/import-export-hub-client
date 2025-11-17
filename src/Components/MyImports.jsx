@@ -9,7 +9,7 @@ const MyImports = () => {
     useEffect(()=>{
         if(user?.email)
         {
-            fetch(`http://localhost:3000/imports?email=${user.email}`)
+            fetch(`https://import-export-hub-server-theta.vercel.app/imports?email=${user.email}`)
             .then(res=>res.json())
             .then(data=>{
                 // console.log(data);
@@ -28,7 +28,7 @@ const MyImports = () => {
   confirmButtonText: "Yes, remove it!"
 }).then((result) => {
   if (result.isConfirmed) {
-    fetch(`http://localhost:3000/imports/${eachImport._id}`,{
+    fetch(`https://import-export-hub-server-theta.vercel.app/imports/${eachImport._id}`,{
         method:'POST',
         headers:{
             'content-type':'application/json'

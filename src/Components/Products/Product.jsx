@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const Product = ({product}) => {
     const {_id,image,name,price,originCountry,rating,availableQuantity}=product;
     return (
-        <div className="card bg-base-100 w-96 shadow-sm mx-auto">
+        <div className="card bg-base-100 md:w-96 w-full shadow-sm mx-auto">
   <figure className="">
     <img
       src={image}

@@ -7,7 +7,8 @@ const ProductDetails = () => {
     const [exceed,setExceed]=useState(false);
     const [message,setMessage]=useState("");
     const [imports,setImports]=useState([]);
-    const product=useLoaderData();
+    const loadedProduct=useLoaderData();
+    const [product,setProduct]=useState(loadedProduct);
     const {user}=useContext(AuthContext);
     // console.log(product);
     const {_id,image,name,price,originCountry,rating,availableQuantity,description,createdAt}=product;
@@ -42,6 +43,7 @@ const ProductDetails = () => {
             console.log('After inserting or modified import:',data);
             if(data.insertedId)
             {
+                console.log('import added',data);
                 modalRef.current.close();
                 Swal.fire({
   position: "top-end",
@@ -56,7 +58,9 @@ const ProductDetails = () => {
             setImports(newImports);
             modalRef.current.close();
              }
-            else{
+            else if(data.modifiedCount){
+                console.log('import updated',data);
+                setProduct()
                 modalRef.current.close();
                 Swal.fire({
   position: "top-end",
@@ -66,6 +70,13 @@ const ProductDetails = () => {
   timer: 1500
 });
             }
+            else{
+                console.log('not imported, also not updated');
+            }
+            const updatedProduct={...product,availableQuantity:product.availableQuantity-parseInt(quantity)
+
+            }
+            setProduct(updatedProduct);
         })
     }
     const handleQuantity=(e)=>{

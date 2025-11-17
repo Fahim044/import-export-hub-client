@@ -19,7 +19,8 @@ const Login = () => {
                 const user=result.user;
                 setUser(user);
                 console.log(user);
-                navigate("/");
+        navigate(`${location.state?location.state:"/"}`);
+
             })
             .catch(error=>{
                 toast(error.message);

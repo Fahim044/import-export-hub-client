@@ -18,7 +18,8 @@ const Register = () => {
             const user=result.user;
             setUser(user);
             console.log(user);
-            navigate("/");
+        navigate(`${location.state?location.state:"/"}`);
+
         })
         .catch(error=>{
             toast(error.message);
@@ -59,7 +60,8 @@ const Register = () => {
             updateUser({displayName:name,photoURL:photo})
             .then(()=>{
                 setUser({...user,displayName:name,photoURL:photo});
-                navigate("/");
+              navigate(`${location.state?location.state:"/"}`);
+
             }).finally(()=>setLoading(false))
         })
         .catch(error=>{

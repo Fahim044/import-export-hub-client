@@ -1,8 +1,8 @@
 import React, { use } from 'react';
 import Product from './Product';
 
-const LatestProduct = ({latestProductsPromise}) => {
-    const products=use(latestProductsPromise);
+const LatestProduct = ({products}) => {
+    // const products=use(latestProductsPromise);
     
     return (
         <div className='mx-auto'>

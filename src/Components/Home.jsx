@@ -1,9 +1,10 @@
 import React, { Suspense } from 'react';
 import LatestProduct from './Products/LatestProduct';
 import Loading from './Loading';
-import { Link } from 'react-router';
-const latestProductsPromise=fetch('https://import-export-hub-server-theta.vercel.app/latest-products').then(res=>res.json());
+import { Link, useLoaderData } from 'react-router';
+// const latestProductsPromise=fetch('https://import-export-hub-server-theta.vercel.app/latest-products').then(res=>res.json());
 const Home = () => {
+    const latestProducts=useLoaderData();
     return (
         <>
         <div className='text-center flex flex-col  bg-purple-300 justify-center gap-9 mx-auto p-4'>
@@ -14,9 +15,10 @@ const Home = () => {
         </div>
         <div>
             
-           <Suspense fallback={<Loading></Loading>}>
+           {/* <Suspense fallback={<Loading></Loading>}>
              <LatestProduct latestProductsPromise={latestProductsPromise}></LatestProduct>
-           </Suspense>
+           </Suspense> */}
+           <LatestProduct products={latestProducts}></LatestProduct>
         </div>
         <section className='w-11/12 mx-auto py-5'>
             <h2 className='text-3xl font-bold text-center my-4'>Functionalities</h2>

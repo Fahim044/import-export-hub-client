@@ -20,7 +20,9 @@ export const router=createBrowserRouter([
         children:[
             {
                 index:true,
-                element:<Home></Home>
+                element:<Home></Home>,
+                loader:()=>fetch('https://import-export-hub-server-theta.vercel.app/latest-products'),
+                hydrateFallbackElement:<Loading></Loading>
             },
             
             
